@@ -1,0 +1,10 @@
+# Default ignored files
+/.idea/
+/metastore_db/
+/spark-warehouse/
+/docs/~*
+/logs/
+/target/
+/derby.log
+spark_custom_fin_fso.iml 
+/out/

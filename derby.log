@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Oct 26 11:53:58 MSK 2020:
+ Производится загрузка Derby версии The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): экземпляр a816c00e-0175-641d-3b31-000013f44f80
+в каталоге базы данных D:\fin_fso\metastore_db org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@14fc9bd 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_202-b08
+user.dir=D:\fin_fso
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Запущен загрузчик классов базы данных - derby.database.classpath=''

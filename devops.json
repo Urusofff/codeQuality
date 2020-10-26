@@ -1,0 +1,52 @@
+{
+  "version": "2.1.17",
+  "jira_task_release": "FSOPPRBFD-1881",
+  "emails": "batkov.v.ol@omega.sbrf.ru Urusov.M.V@omega.sbrf.ru Kiryukhina.N.Vi@omega.sbrf.ru",
+  "build": "maven",
+  "type": "oozie",
+  "configure_item": "CI02335231_PKAP_FSO",
+  "block": "fin",
+  "datamart_group": "fso",
+  "datamart_name": "custom_fin_fso",
+  "sq_pr_key": "FSO",
+  "sq_pr_name": "CUSTOM_FIN_FSO",
+  "sq_scan_folder": "src/main/java,hive",
+  "sq_binary_folder": "target",
+  "sast_conf": "devsecops-config.yml",
+  "run_hive_script_sql": true,
+  "maven": {
+    "pom_path": "pom.xml",
+    "set_cred_id": "custom_fin_fso_maven_settings",
+    "options_mvn": "-P sonar-coverage"
+  },
+  "workflow_to_run": [
+    "IFT.wf_DMDS"
+  ],
+  "external_libs": [
+    {
+      "source": "http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/Bigdata_release/ru/sberbank/cm/flume-appender/1.0.5/flume-appender-1.0.5-jar-with-dependencies.jar",
+      "destination": "hdfs/commons/"
+    }
+  ],
+  "distrib_files": [
+    { "destination": "ctl/",                  "source": "ctl/ctl.yml"                            },
+    { "destination": "s2t/",                  "source": "docs/s2t.xlsx"                          },
+
+    { "destination": "hdfs/commons/",         "source": "target/spark_custom_fin_fso.jar"        },
+    { "destination": "hdfs/commons/",         "source": "hdfs/commons/*"                         },
+
+    { "destination": "hdfs/wf_DMDS/",         "source": "hdfs/oozie/wf_DMDS/workflow.xml"        },
+    { "destination": "hdfs/wf_DMDET/",        "source": "hdfs/oozie/wf_DMDET/workflow.xml"       },
+    { "destination": "hdfs/wf_DMREP.FORM1/",  "source": "hdfs/oozie/wf_DMREP.FORM1/workflow.xml" },
+    { "destination": "hdfs/wf_DMREP.FORM2/",  "source": "hdfs/oozie/wf_DMREP.FORM2/workflow.xml" },
+    { "destination": "hdfs/wf_DMREP.FORM3/",  "source": "hdfs/oozie/wf_DMREP.FORM3/workflow.xml" },
+    { "destination": "hdfs/wf_DMREP.FORM5/",  "source": "hdfs/oozie/wf_DMREP.FORM5/workflow.xml" },
+    { "destination": "hdfs/wf_CERT/",         "source": "hdfs/oozie/wf_CERT/workflow.xml"        },
+
+    { "destination": "sql/",                  "source": "hive/custom_fin_fso_dmcor/*.sql"        },
+    { "destination": "sql/",                  "source": "hive/custom_fin_fso_dmdet/*.sql"        },
+    { "destination": "sql/",                  "source": "hive/custom_fin_fso_dmds/*.sql"        },
+    { "destination": "sql/",                  "source": "hive/custom_fin_fso_dmrep/*.sql"        },
+    { "destination": "sql/",                  "source": "hive/custom_fin_fso_tmd/*.sql"        }
+  ]
+}
